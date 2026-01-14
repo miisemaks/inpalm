@@ -4,11 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Login } from 'screens/login';
 import { NavigationContainer } from '@react-navigation/native';
 import { colors } from 'shared/styles/colors';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { ConfirmCode } from 'screens/confirmCode';
 import { Register } from 'screens/register';
 import { RootStackParamList } from 'shared/types/navigation';
 import { Restore } from 'screens/restore';
+import { ArrowLeft } from 'shared/icons/ArrowLeft';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -18,7 +19,7 @@ export const Navigation = () => {
       <SafeAreaView style={{ flex: 1 }}>
         <NavigationContainer>
           <Stack.Navigator
-            screenOptions={{
+            screenOptions={({ navigation }) => ({
               headerStyle: {
                 backgroundColor: colors.bgPrimary,
               },
@@ -28,13 +29,17 @@ export const Navigation = () => {
               contentStyle: {
                 backgroundColor: colors.bgPrimary,
               },
-              headerBackTitle: '',
-            }}
+              headerLeft: () => (
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                  <ArrowLeft />
+                </TouchableOpacity>
+              ),
+            })}
           >
             <Stack.Screen
               name="Login"
               component={Login}
-              options={{ title: 'Авторизация' }}
+              options={{ title: 'Авторизация', headerLeft: () => null }}
             />
             <Stack.Screen
               name="ConfirmCode"

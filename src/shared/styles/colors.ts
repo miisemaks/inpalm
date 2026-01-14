@@ -9,3 +9,5 @@ export const colors = {
   accent: '#14EBAB',
   accent2: '#14EBAB4D',
 };
+
+export type ColorType = keyof typeof colors;
