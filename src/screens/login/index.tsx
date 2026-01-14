@@ -43,6 +43,7 @@ export const Login = (props: Props) => {
             error={!phoneValid ? 'Номер телефона указан неправильно' : null}
             mask="+7 ([000]) [000] [00] [00]"
             keyboardType="phone-pad"
+            autoFocus
           />
           <View
             style={{

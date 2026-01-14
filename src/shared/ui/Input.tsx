@@ -12,11 +12,20 @@ type Props = {
   error?: string | null;
   mask?: string;
   keyboardType?: KeyboardType;
+  autoFocus?: boolean;
 };
 
 export const Input = (props: Props) => {
-  const { label, value, onChange, placeholder, error, mask, keyboardType } =
-    props;
+  const {
+    label,
+    value,
+    onChange,
+    placeholder,
+    error,
+    mask,
+    keyboardType,
+    autoFocus,
+  } = props;
   const Component = mask ? MaskedTextInput : TextInput;
 
   return (
@@ -33,6 +42,7 @@ export const Input = (props: Props) => {
             borderWidth: 1,
             borderColor: error ? colors.danger : colors.bgSecondary,
           }}
+          autoFocus={autoFocus}
           value={value}
           onChangeText={onChange}
           placeholder={placeholder}
