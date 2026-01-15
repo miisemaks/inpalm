@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text as RCTText, TextProps } from 'react-native';
+import { Text as RCTText, StyleSheet, TextProps } from 'react-native';
 import { colors } from 'shared/styles/colors';
 
 type Props = TextProps & {
@@ -12,12 +12,16 @@ export const Text = (props: Props) => {
   return (
     <RCTText
       allowFontScaling={false}
-      style={{
-        color: colors.textPrimary,
-      }}
       {...rest}
+      style={[styles.text, rest.style]}
     >
       {children}
     </RCTText>
   );
 };
+
+const styles = StyleSheet.create({
+  text: {
+    color: colors.textPrimary,
+  },
+});

@@ -73,7 +73,8 @@ export const Login = (props: Props) => {
         <Button
           title="Войти"
           onPress={() => {
-            if (phone.length > 11) {
+            console.log('length', phone.length);
+            if (phone.length >= 18) {
               navigation.navigate('ConfirmCode', {
                 phone: phone,
               });
