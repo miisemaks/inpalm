@@ -14,7 +14,7 @@ type Props = {
   onChange: (value: string) => void;
   size?: number;
   error?: string | null;
-  onComplete: () => void;
+  onComplete: (value: string) => void;
 };
 
 export const InputCode = (props: Props) => {
@@ -25,6 +25,7 @@ export const InputCode = (props: Props) => {
       <View style={styles.container}>
         {Array.from(Array(size).keys()).map(i => (
           <TouchableOpacity
+            key={`item_${i}`}
             style={[
               styles.rect,
               {
@@ -60,7 +61,7 @@ export const InputCode = (props: Props) => {
           onChangeText={val => {
             onChange(val);
             if (val.length === size) {
-              onComplete();
+              onComplete(val);
             }
           }}
           maxLength={size}

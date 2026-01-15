@@ -45,11 +45,13 @@ export const ConfirmCode = (props: Props) => {
         }}
         size={4}
         error={errorText}
-        onComplete={() => {
-          if (code === '1234') {
-            navigation.navigate('Login');
+        onComplete={value => {
+          if (value === '1234') {
+            navigation.navigate('Tab', {
+              screen: 'Main',
+            });
           } else {
-            setValue('errorText', 'Код введен неправильно');
+            setValue('errorText', code + ' ' + 'Код введен неправильно');
           }
         }}
       />

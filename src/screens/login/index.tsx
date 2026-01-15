@@ -25,9 +25,16 @@ export const Login = (props: Props) => {
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior="padding"
-      keyboardVerticalOffset={bottom + top + 48}
+      keyboardVerticalOffset={top + 48}
     >
-      <View style={{ flex: 1, marginHorizontal: 16, gap: 32 }}>
+      <View
+        style={{
+          flex: 1,
+          marginHorizontal: 16,
+          gap: 32,
+          paddingBottom: bottom,
+        }}
+      >
         <ScrollView
           style={{ flex: 1, gap: 16 }}
           contentContainerStyle={{ gap: 16, paddingTop: 24 }}
