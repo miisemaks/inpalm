@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TextInput, KeyboardType } from 'react-native';
+import { View, TextInput, KeyboardType, StyleSheet } from 'react-native';
 import { colors } from 'shared/styles/colors';
 import { Text } from './Text';
 import { MaskedTextInput } from 'react-native-advanced-input-mask';
@@ -13,6 +13,8 @@ type Props = {
   mask?: string;
   keyboardType?: KeyboardType;
   autoFocus?: boolean;
+  disabled?: boolean;
+  required?: boolean;
 };
 
 export const Input = (props: Props) => {
@@ -25,12 +27,20 @@ export const Input = (props: Props) => {
     mask,
     keyboardType,
     autoFocus,
+    disabled,
+    required,
   } = props;
   const Component = mask ? MaskedTextInput : TextInput;
 
   return (
     <View style={{ gap: 8 }}>
-      <Text style={{ fontSize: 12, color: colors.textSecondary }}>{label}</Text>
+      <View style={styles.labelView}>
+        <Text style={{ fontSize: 12, color: colors.textSecondary }}>
+          {label}
+        </Text>
+        {required ? <Text style={{ color: colors.danger }}>*</Text> : null}
+      </View>
+
       <View style={{ gap: 4 }}>
         <Component
           style={{
@@ -42,6 +52,7 @@ export const Input = (props: Props) => {
             borderWidth: 1,
             borderColor: error ? colors.danger : colors.bgSecondary,
           }}
+          editable={!disabled}
           autoFocus={autoFocus}
           value={value}
           onChangeText={onChange}
@@ -64,3 +75,11 @@ export const Input = (props: Props) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  labelView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+});
