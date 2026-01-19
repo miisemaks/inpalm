@@ -32,6 +32,7 @@ export const TabNavigation = () => {
           color: colors.textPrimary,
         },
       }}
+      initialRouteName="Main"
     >
       <Tab.Screen
         name="Main"

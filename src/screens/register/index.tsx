@@ -7,6 +7,7 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigationStore } from 'shared/store/navigation';
 import { RootStackScreenProps } from 'shared/types/navigation';
 import { Button } from 'shared/ui/Button';
 import { Input } from 'shared/ui/Input';
@@ -14,7 +15,7 @@ import { Input } from 'shared/ui/Input';
 type Props = RootStackScreenProps<'Register'>;
 
 export const Register = (props: Props) => {
-  const {} = props;
+  const { navigation } = props;
 
   const { watch, setValue } = useForm<{
     firstName: string;
@@ -38,6 +39,7 @@ export const Register = (props: Props) => {
   const { firstName, lastName, phone, code, verification, smsRequested, sec } =
     watch();
   const { bottom, top } = useSafeAreaInsets();
+  const { setInitialScreen } = useNavigationStore();
 
   useEffect(() => {
     if (smsRequested && sec < 60) {
@@ -119,7 +121,12 @@ export const Register = (props: Props) => {
         </ScrollView>
         <Button
           title="Зарегистрировать"
-          onPress={() => {}}
+          onPress={() => {
+            setInitialScreen('Tab');
+            navigation.replace('Tab', {
+              screen: 'Main',
+            });
+          }}
           disabled={!verification}
         />
       </View>

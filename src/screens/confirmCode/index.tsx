@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
+import { useNavigationStore } from 'shared/store/navigation';
 import { colors } from 'shared/styles/colors';
 import { RootStackScreenProps } from 'shared/types/navigation';
 import { InputCode } from 'shared/ui/InputCode';
@@ -23,6 +24,7 @@ export const ConfirmCode = (props: Props) => {
     },
   });
   const { code, errorText, sec } = watch();
+  const { setInitialScreen } = useNavigationStore();
 
   useEffect(() => {
     setTimeout(() => {
@@ -47,7 +49,9 @@ export const ConfirmCode = (props: Props) => {
         error={errorText}
         onComplete={value => {
           if (value === '1234') {
-            navigation.navigate('Tab', {
+            setInitialScreen('Tab');
+            navigation.popToTop();
+            navigation.replace('Tab', {
               screen: 'Main',
             });
           } else {
