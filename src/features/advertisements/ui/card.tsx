@@ -1,6 +1,7 @@
 import { BlurView, LiquidGlassView } from '@sbaiahmed1/react-native-blur';
 import { memo } from 'react';
 import {
+  FlatList,
   Image,
   ImageBackground,
   StyleSheet,
@@ -69,38 +70,43 @@ export const AdvertisementCard = memo((props: Props) => {
           <MenuKebab />
         </TouchableOpacity>
       </View>
-      <LiquidGlassView>
-        <ImageBackground
-          source={
-            images && images.length > 0
-              ? {
-                  uri: images[0],
-                }
-              : undefined
-          }
-          style={{
-            width: width,
-            height: width,
-          }}
-        >
-          <BlurView
-            style={{
-              paddingHorizontal: 12,
-              paddingVertical: 8,
-              borderRadius: 16,
-              alignSelf: 'flex-end',
-              marginTop: 8,
-              marginRight: 8,
-              position: 'absolute',
-            }}
-            overlayColor={colors.accent2}
-            blurType="light"
-            blurAmount={8}
-          >
-            <Text>1 / {images?.length}</Text>
-          </BlurView>
-        </ImageBackground>
-      </LiquidGlassView>
+      <FlatList
+        horizontal
+        data={images}
+        keyExtractor={(_, index) => `image_${index}`}
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item, index }) => (
+          <LiquidGlassView>
+            <ImageBackground
+              style={{
+                width: width,
+                height: width,
+              }}
+              source={{ uri: item }}
+            >
+              <BlurView
+                style={{
+                  paddingHorizontal: 12,
+                  paddingVertical: 8,
+                  borderRadius: 16,
+                  alignSelf: 'flex-end',
+                  marginTop: 8,
+                  marginRight: 8,
+                  position: 'absolute',
+                }}
+                overlayColor={colors.accent + '66'}
+                blurType="light"
+                blurAmount={8}
+              >
+                <Text>
+                  {index + 1} / {images?.length}
+                </Text>
+              </BlurView>
+            </ImageBackground>
+          </LiquidGlassView>
+        )}
+      />
       {text ? <Text style={{ paddingHorizontal: 16 }}>{text}</Text> : null}
       <View style={styles.infoView}>
         <TouchableOpacity style={styles.viewTouch}>
