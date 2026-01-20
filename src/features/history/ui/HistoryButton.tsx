@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
-import { LiquidGlassView } from '@sbaiahmed1/react-native-blur';
-import { colors } from 'shared/styles/colors';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Avatar } from 'shared/ui/Avatar';
+import { Text } from 'shared/ui/Text';
 
 type Props = {
   url?: string | null;
@@ -12,23 +12,27 @@ export const HistoryButton = memo((props: Props) => {
   const { url, onPress } = props;
 
   return (
-    <LiquidGlassView
-      isInteractive
-      glassType="regular"
-      glassOpacity={0.7}
-      glassTintColor={colors.accent2}
-      style={{ borderRadius: 28 }}
+    <TouchableOpacity
+      style={styles.container}
+      disabled={!!onPress}
+      onPress={onPress}
     >
-      <TouchableOpacity onPress={onPress}>
-        <Image
-          style={{
-            width: 56,
-            height: 56,
-            borderRadius: 28,
-          }}
-          source={url ? { uri: url } : undefined}
-        />
-      </TouchableOpacity>
-    </LiquidGlassView>
+      <Avatar url={url ?? null} />
+      <Text numberOfLines={1} style={styles.name}>
+        Mikhail
+      </Text>
+    </TouchableOpacity>
   );
+});
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    gap: 4,
+  },
+  name: {
+    fontSize: 12,
+    fontWeight: 600,
+    maxWidth: 56,
+  },
 });

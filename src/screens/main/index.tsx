@@ -1,9 +1,16 @@
 import { AdvertisementCard } from 'features/advertisements';
 import { HistoryButton } from 'features/history';
 import React from 'react';
-import { StyleSheet, FlatList, useWindowDimensions } from 'react-native';
+import {
+  StyleSheet,
+  FlatList,
+  useWindowDimensions,
+  TouchableOpacity,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BottomScreenProps } from 'shared/types/navigation';
+import { Avatar } from 'shared/ui/Avatar';
+import { Text } from 'shared/ui/Text';
 
 const histories = [
   {
@@ -115,6 +122,12 @@ export const Main = (props: Props) => {
           renderItem={({ item }) => (
             <HistoryButton url={item.author.avatar} onPress={() => {}} />
           )}
+          ListHeaderComponent={
+            <TouchableOpacity style={{ gap: 4 }}>
+              <Avatar size={56} url={null} />
+              <Text style={styles.youText}>Вы</Text>
+            </TouchableOpacity>
+          }
         />
       }
     />
@@ -124,5 +137,10 @@ export const Main = (props: Props) => {
 const styles = StyleSheet.create({
   root: {
     gap: 12,
+  },
+  youText: {
+    fontSize: 12,
+    alignSelf: 'center',
+    fontWeight: 600,
   },
 });
