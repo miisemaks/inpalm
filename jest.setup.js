@@ -11,8 +11,8 @@ jest.mock('@react-native-async-storage/async-storage', () => {
 
 jest.mock('react-native/src/private/specs_DEPRECATED/components/DebuggingOverlayNativeComponent', () => 'View');
 
-jest.mock('@callstack/liquid-glass', () => {
-    return {
-        LiquidGlassView: 'LiquidGlassView',
-    }
-})
+jest.mock('@sbaiahmed1/react-native-blur', () => {
+  return  {
+    LiquidGlassView: 'LiquidGlassView'
+  }
+});

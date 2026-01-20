@@ -5,8 +5,8 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import { LiquidGlassView } from '@callstack/liquid-glass';
 import { colors } from 'shared/styles/colors';
+import { LiquidGlassView } from '@sbaiahmed1/react-native-blur';
 
 type Props = {
   title: string;
@@ -22,10 +22,10 @@ export const Button = (props: Props) => {
   return (
     <LiquidGlassView
       style={styles.container}
-      colorScheme="system"
-      tintColor={variant === 'primary' ? colors.accent2 : 'transparent'}
-      interactive={!disabled}
-      effect={'regular'}
+      isInteractive
+      glassType="regular"
+      glassTintColor={variant === 'primary' ? colors.accent2 : 'transparent'}
+      glassOpacity={0.8}
     >
       <TouchableOpacity
         style={styles.touch}

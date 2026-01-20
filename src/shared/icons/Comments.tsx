@@ -1,0 +1,17 @@
+import React from 'react';
+import { Path, Svg } from 'react-native-svg';
+import { colors } from 'shared/styles/colors';
+import { IconProps } from 'shared/types/IconProp';
+
+export const Comments = ({ size = 24, color = 'textPrimary' }: IconProps) => {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M16.5662 16.6668C16.3537 16.5572 16.118 16.5 15.8788 16.5H8C6.067 16.5 4.5 14.933 4.5 13V7C4.5 6.17157 5.17157 5.5 6 5.5H18C18.8284 5.5 19.5 6.17157 19.5 7V16V18V18.1795L16.5662 16.6668ZM6 4C4.34315 4 3 5.34315 3 7V13C3 15.7614 5.23858 18 8 18H15.8788L19.5417 19.8887C20.2073 20.2319 21 19.7487 21 18.9999V18V16V7C21 5.34315 19.6569 4 18 4H6ZM16 12.25H8V13.75H16V12.25ZM16 8.25H8V9.75H16V8.25Z"
+        fill={colors[color]}
+      />
+    </Svg>
+  );
+};

@@ -31,6 +31,11 @@ module.exports = {
           {
             message:
               'Private imports are prohibited, use public imports instead',
+            group: ['features/*/*/*/**'],
+          },
+          {
+            message:
+              'Private imports are prohibited, use public imports instead',
             group: ['shared/*/*/**'],
           },
         ],
@@ -45,8 +50,9 @@ module.exports = {
             from: 'app',
             allow: ['pages', 'entities', 'shared'],
           },
-          {from: 'pages', allow: ['entities', 'shared', 'app']},
-          {from: 'entities', allow: ['shared', 'entities']},
+          {from: 'pages', allow: ['entities', 'features', 'shared', 'app']},
+          {from: 'entities', allow: ['shared', 'features', 'entities']},
+          {from: 'features', allow: ['shared']},
           {from: 'shared', allow: ['shared']},
         ],
       },
@@ -58,6 +64,7 @@ module.exports = {
       {type: 'app', pattern: 'app/*'},
       {type: 'pages', pattern: 'screens/*'},
       {type: 'entities', pattern: 'entities/*'},
+      {type: 'features', pattern: 'features/*'},
       {type: 'shared', pattern: 'shared/*'},
     ],
   },
