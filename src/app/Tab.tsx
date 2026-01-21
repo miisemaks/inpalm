@@ -18,10 +18,10 @@ export const TabNavigation = () => {
     <Tab.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: colors.bgPrimary,
+          backgroundColor: colors.bgSecondary,
         },
         sceneStyle: {
-          backgroundColor: colors.bgPrimary,
+          backgroundColor: colors.bgSecondary,
         },
         tabBarStyle: {
           backgroundColor: colors.bgPrimary,
@@ -69,6 +69,7 @@ export const TabNavigation = () => {
         name="Profile"
         component={Profile}
         options={{
+          headerTitle: 'Профиль',
           tabBarLabel: 'Профиль',
           tabBarIcon: props => (
             <ProfileCircle color={props.focused ? 'accent' : 'textSecondary'} />

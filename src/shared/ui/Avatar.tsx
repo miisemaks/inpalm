@@ -15,7 +15,7 @@ export const Avatar = memo((props: Props) => {
 
   return (
     <LiquidGlassView
-      style={{ borderRadius: size / 2 }}
+      style={{ borderRadius: size / 2, width: size, height: size }}
       isInteractive={!disabled}
       glassType="regular"
       glassOpacity={0.8}
