@@ -3,13 +3,13 @@ import React from 'react';
 import { Chats } from 'screens/chats';
 import { Main } from 'screens/main';
 import { Profile } from 'screens/profile';
-import { Search } from 'screens/search';
 import { colors } from 'shared/styles/colors';
 import { BottomTabParamList } from 'shared/types/navigation';
 import { Search as SearchIcon } from 'shared/icons/Search';
 import { ProfileCircle } from 'shared/icons/ProfileCircle';
 import { Message } from 'shared/icons/Message';
 import { Home } from 'shared/icons/Home';
+import { SearchTab } from './SearchTab';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -24,6 +24,7 @@ export const TabNavigation = () => {
           backgroundColor: colors.bgSecondary,
         },
         tabBarStyle: {
+          borderTopColor: 'transparent',
           backgroundColor: colors.bgPrimary,
         },
         tabBarActiveTintColor: colors.accent,
@@ -47,11 +48,12 @@ export const TabNavigation = () => {
       />
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={SearchTab}
         options={{
           tabBarIcon: props => (
             <SearchIcon color={props.focused ? 'accent' : 'textSecondary'} />
           ),
+          headerTitle: 'Поиск',
           tabBarLabel: 'Поиск',
         }}
       />
@@ -59,6 +61,7 @@ export const TabNavigation = () => {
         name="Chats"
         component={Chats}
         options={{
+          headerTitle: 'Чаты',
           tabBarLabel: 'Чаты',
           tabBarIcon: props => (
             <Message color={props.focused ? 'accent' : 'textSecondary'} />

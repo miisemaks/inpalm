@@ -1,16 +1,17 @@
 import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { Advertisements } from './advertisements';
-import { Peoples } from './peoples';
-import { Products } from './products';
-import { Groups } from './groups';
+import { Advertisements } from 'screens/search/advertisements';
+import { Peoples } from 'screens/search/peoples';
+import { Products } from 'screens/search/products';
+import { Groups } from 'screens/search/groups';
 import { colors } from 'shared/styles/colors';
 import { useForm } from 'react-hook-form';
+import { SearchTabParamList } from 'shared/types/navigation';
 
-const Tab = createMaterialTopTabNavigator();
+const Tab = createMaterialTopTabNavigator<SearchTabParamList>();
 
-export const Search = () => {
+export const SearchTab = () => {
   const { watch, setValue } = useForm<{ search: string }>({
     defaultValues: {
       search: '',
@@ -74,14 +75,14 @@ export const Search = () => {
           }}
         />
         <Tab.Screen
-          name="Product"
+          name="Products"
           component={Products}
           options={{
             tabBarLabel: 'Товары',
           }}
         />
         <Tab.Screen
-          name="Group"
+          name="Groups"
           component={Groups}
           options={{
             tabBarLabel: 'Группы',

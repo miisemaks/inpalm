@@ -16,3 +16,9 @@ jest.mock('@sbaiahmed1/react-native-blur', () => {
     LiquidGlassView: 'LiquidGlassView'
   }
 });
+
+jest.mock('react-native-pager-view', () => {
+  return {
+    PagerView: 'PagerView',
+  };
+});
