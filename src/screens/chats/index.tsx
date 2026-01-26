@@ -5,7 +5,7 @@ import { Text } from 'shared/ui/Text';
 export const Chats = () => {
   return (
     <View style={styles.root}>
-      <Text>Chats</Text>
+      <Text>Chats screen</Text>
     </View>
   );
 };
