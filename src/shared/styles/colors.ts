@@ -5,6 +5,8 @@ export const colors = {
   textPrimary: '#fff',
   textSecondary: '#ABABAB',
 
+  border: '#575757',
+
   danger: '#E00F0F',
   accent: '#14EBAB',
   accent2: '#14EBAB4D',
