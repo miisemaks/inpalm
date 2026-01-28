@@ -8,10 +8,11 @@ type Props = {
   url: string | null;
   size?: number;
   disabled?: boolean;
+  onPress?: () => void;
 };
 
 export const Avatar = memo((props: Props) => {
-  const { size = 56, url, disabled } = props;
+  const { size = 56, url, disabled, onPress } = props;
 
   return (
     <LiquidGlassView
@@ -21,7 +22,7 @@ export const Avatar = memo((props: Props) => {
       glassOpacity={0.8}
       glassTintColor={colors.bgPrimary}
     >
-      <TouchableOpacity disabled={disabled}>
+      <TouchableOpacity disabled={disabled} onPress={onPress}>
         {url ? (
           <Image
             style={{
@@ -39,10 +40,10 @@ export const Avatar = memo((props: Props) => {
               borderRadius: size / 2,
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: colors.bgSecondary,
+              backgroundColor: colors.border,
             }}
           >
-            <ProfileCircle size={36} />
+            <ProfileCircle size={(size / 4) * 3} />
           </View>
         )}
       </TouchableOpacity>

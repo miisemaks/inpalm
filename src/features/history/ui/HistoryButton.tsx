@@ -1,15 +1,18 @@
 import React, { memo } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { colors } from 'shared/styles/colors';
 import { Avatar } from 'shared/ui/Avatar';
 import { Text } from 'shared/ui/Text';
 
 type Props = {
   url?: string | null;
   onPress?: () => void;
+  readed?: boolean;
+  name: string;
 };
 
 export const HistoryButton = memo((props: Props) => {
-  const { url, onPress } = props;
+  const { url, onPress, readed, name } = props;
 
   return (
     <TouchableOpacity
@@ -17,9 +20,21 @@ export const HistoryButton = memo((props: Props) => {
       disabled={!!onPress}
       onPress={onPress}
     >
-      <Avatar url={url ?? null} />
+      <View
+        style={{
+          width: 60,
+          height: 60,
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: 30,
+          backgroundColor: readed ? colors.border : colors.accent,
+        }}
+      >
+        <Avatar url={url ?? null} onPress={onPress} />
+      </View>
+
       <Text numberOfLines={1} style={styles.name}>
-        Mikhail
+        {name}
       </Text>
     </TouchableOpacity>
   );

@@ -10,5 +10,5 @@ export const getName = (
     return `${firstName}`;
   }
 
-  return emptyState;
+  return emptyState ?? null;
 };
